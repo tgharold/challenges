@@ -18,5 +18,16 @@ namespace coretests.AlphabetCipherTests
                 Assert.Equal(expected, result.Length);
             }
         }
+
+        [Theory]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 0, "abcdefghijklmnopqrstuvwxyz")]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 3, "defghijklmnopqrstuvwxyzabc")]
+        public void Array_row_is_correct(string alphabet, int rowIndex, string expected)
+        {
+            var sut = new AlphabetCipher(alphabet);
+            var results = sut.GetSubstitutionArray().ToArray();
+            var result = results[rowIndex];
+            Assert.Equal(expected, result);
+        }
     }
 }

@@ -25,5 +25,19 @@ namespace coretests.AlphabetCipherTests
             var result = _sut.Encode(input, key);
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 's', 't', 'l')]
+        public void Encode_does_correct_substitution(
+            string alphabet, 
+            char keyChar,
+            char inputChar,
+            char expected
+            )
+        {
+            var sut = new AlphabetCipher(alphabet);
+            var result = sut.Encode(inputChar, keyChar);
+            Assert.Equal(expected, result);
+        }
     }
 }
