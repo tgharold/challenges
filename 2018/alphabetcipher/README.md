@@ -8,7 +8,7 @@ https://www.reddit.com/r/dailyprogrammer/comments/879u8b/20180326_challenge_355_
 
 You must make a substitution chart like this, where each row of the alphabet is rotated by one as each letter goes down the chart. All test cases will utilize this same substitution chart.
 
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ
     A abcdefghijklmnopqrstuvwxyz
     B bcdefghijklmnopqrstuvwxyza
     C cdefghijklmnopqrstuvwxyzab
