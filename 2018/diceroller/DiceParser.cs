@@ -6,17 +6,18 @@ namespace diceroller
 {
     public static class DiceParser
     {
-        private const string _diceRegexPattern = "[0-9]{1,3}[dD]{1}[0-9]{1,3}";
+        private const string _diceRegexPattern = @"([0-9]{1,3}[dD]{1}[0-9]{1,3})";
 
         public static IEnumerable<Die> GetDice(string input)
         {
             var result = new List<Die>();
             if (string.IsNullOrEmpty(input)) return result;
 
-            var splitInput = Regex.Split(input, _diceRegexPattern);
-            foreach(var element in splitInput)
+            MatchCollection matches = Regex.Matches(input, _diceRegexPattern);
+            foreach(Match match in matches)
             {
-                result.AddRange(ParseDiceDefinition(element));
+                foreach(Capture capture in match.Captures)
+                result.AddRange(ParseDiceDefinition(capture.Value));
             }
 
             return result;
