@@ -23,6 +23,6 @@ result: 5042
 
 # Technology stack
 
-.NET Core 2.1
-macOS
-Visual Studio Code
+- .NET Core 2.1
+- macOS
+- Visual Studio Code
