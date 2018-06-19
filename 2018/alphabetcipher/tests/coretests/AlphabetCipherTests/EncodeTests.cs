@@ -5,11 +5,12 @@ namespace coretests.AlphabetCipherTests
 {
     public class EncodeTests
     {
+        private const string _alphabet = "abcdefghijklmnopqrstuvwxyz";
         private ICipherInterface _sut;
 
         public EncodeTests()
         {
-            _sut = new AlphabetCipher();
+            _sut = new AlphabetCipher(_alphabet);
         }
 
         [Theory]
@@ -27,7 +28,17 @@ namespace coretests.AlphabetCipherTests
         }
 
         [Theory]
-        [InlineData("abcdefghijklmnopqrstuvwxyz", 's', 't', 'l')]
+        [InlineData(_alphabet, 'p', 'a', 'p')]
+        [InlineData(_alphabet, 's', 't', 'l')]
+        [InlineData(_alphabet, 'v', 'm', 'h')]
+        [InlineData(_alphabet, 'i', 'e', 'm')]
+        [InlineData(_alphabet, 'g', 'e', 'k')]
+        [InlineData(_alphabet, 'i', 't', 'b')]
+        [InlineData(_alphabet, 'l', 'm', 'x')]
+        [InlineData(_alphabet, 'a', 'e', 'e')]
+        [InlineData(_alphabet, 'n', 'o', 'b')]
+        [InlineData(_alphabet, 'c', 'n', 'p')]
+        [InlineData(_alphabet, 'e', 't', 'x')]
         public void Encode_does_correct_substitution(
             string alphabet, 
             char keyChar,
