@@ -72,9 +72,9 @@ namespace core
         public char Encode(char inputChar, char keyChar)
         {
             var x = Array.FindIndex(_alphabet, c => c == keyChar);
-            if (x == default(char)) return inputChar;
+            if (x < 0) return inputChar;
             var y = Array.FindIndex(_alphabet, c => c == inputChar);
-            if (y == default(char)) return inputChar;
+            if (y < 0) return inputChar;
             return _substitutionArray[x,y];
         }
 
