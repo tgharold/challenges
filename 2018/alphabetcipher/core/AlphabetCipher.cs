@@ -26,6 +26,19 @@ namespace core
                 );
             _substitutionArray = new char[_alphabetSize,_alphabetSize];
             _alphabet = alphabet.ToCharArray();
+
+            var duplicates = _alphabet
+                .GroupBy(x => x)
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key)
+                .ToList()
+                ;
+            if (duplicates.Any())
+                throw new ArgumentException(
+                  nameof(alphabet),
+                  $"Found duplicate characters: '{string.Join(",",duplicates)}'."  
+                );
+
             SetupSubstitutionArray();
         }
 
