@@ -21,7 +21,10 @@ namespace coretests.AlphabetCipherTests
 
         [Theory]
         [InlineData("abcdefghijklmnopqrstuvwxyz", 0, "abcdefghijklmnopqrstuvwxyz")]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 1, "bcdefghijklmnopqrstuvwxyza")]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 2, "cdefghijklmnopqrstuvwxyzab")]
         [InlineData("abcdefghijklmnopqrstuvwxyz", 3, "defghijklmnopqrstuvwxyzabc")]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 25, "zabcdefghijklmnopqrstuvwxy")]
         public void Array_row_is_correct(string alphabet, int rowIndex, string expected)
         {
             var sut = new AlphabetCipher(alphabet);
