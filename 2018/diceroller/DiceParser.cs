@@ -23,6 +23,19 @@ namespace diceroller
             return result;
         }
 
+        public static int RollDice(IEnumerable<Die> dice)
+        {
+            var result = 0;
+            foreach(var die in dice) result += RollDie(die);
+            return result;
+        }
+
+        private static int RollDie(Die die)
+        {
+            //TODO: Use IoC to inject something looking like Random
+            return Program.Random.Next(die.Sides) + 1;
+        }
+
         private static IEnumerable<Die> ParseDiceDefinition(string element)
         {
             var elements = Regex.Split(element, "[dD]{1}");
