@@ -20,3 +20,9 @@ input: 5d12,6d4,1d2,1d8,3d6,4d20,100d100
 number of dice: 120
 result: 5042
 ```
+
+# Technology stack
+
+.NET Core 2.1
+macOS
+Visual Studio Code
