@@ -16,7 +16,7 @@ namespace diceroller
             var result = DiceParser.RollDice(dice);
             Console.WriteLine($"result: {result}");
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine();
         }
     }
 }
