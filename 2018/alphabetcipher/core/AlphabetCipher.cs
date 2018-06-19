@@ -58,23 +58,38 @@ namespace core
 
         public char Encode(char inputChar, char keyChar)
         {
-            var x = _alphabet.FirstOrDefault(c => c == keyChar);
+            var x = Array.FindIndex(_alphabet, c => c == keyChar);
             if (x == default(char)) return inputChar;
-            var y = _alphabet.FirstOrDefault(c => c == inputChar);
+            var y = Array.FindIndex(_alphabet, c => c == inputChar);
             if (y == default(char)) return inputChar;
             return _substitutionArray[x,y];
         }
 
-        public char[] CreateKeyArray(string key)
+        public string CreateKeyString(string key, int length)
         {
-            return null;
+            var stringBuilder = new StringBuilder();
+            var keyLength = key.Length;
+            var iterations = (length / keyLength);
+            stringBuilder.Append(key);
+            for (var i = 0; i < iterations; i++)
+            {
+                stringBuilder.Append(key);
+            }
+            var result = stringBuilder.ToString();
+            return result.Substring(0, length);
         }
 
         public string Encode(string input, string key)
         {
             var inputChars = input.ToCharArray();
+            var keyChars = CreateKeyString(key, input.Length).ToCharArray();
+            var stringBuilder = new StringBuilder();
 
-            throw new NotImplementedException();
+            for(var i = 0; i < inputChars.Length; i++)
+            {
+                stringBuilder.Append(Encode(inputChars[i], keyChars[i]));
+            }
+            return stringBuilder.ToString();
         }
 
         public string Decode(string input, string key)
