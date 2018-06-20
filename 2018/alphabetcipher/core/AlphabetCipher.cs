@@ -111,6 +111,7 @@ namespace core
             var i = Array.FindIndex(_alphabet, c => c == inputChar);
             if (k < 0 || i < 0) return inputChar;
 
+            // (input,key)=output
             // (h,v)=m -> (8,22)=13
             // (m,i)=e -> (13,9)=5
 
