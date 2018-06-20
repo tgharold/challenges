@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,15 +69,6 @@ namespace core
             return result;;
         }
 
-        public char Encode(char inputChar, char keyChar)
-        {
-            var x = Array.FindIndex(_alphabet, c => c == keyChar);
-            if (x < 0) return inputChar;
-            var y = Array.FindIndex(_alphabet, c => c == inputChar);
-            if (y < 0) return inputChar;
-            return _substitutionArray[x,y];
-        }
-
         public string CreateKeyString(string key, int length)
         {
             var stringBuilder = new StringBuilder();
@@ -92,23 +83,19 @@ namespace core
             return result.Substring(0, length);
         }
 
+        public char Encode(char inputChar, char keyChar)
+        {
+            var x = Array.FindIndex(_alphabet, c => c == keyChar);
+            if (x < 0) return inputChar;
+            var y = Array.FindIndex(_alphabet, c => c == inputChar);
+            if (y < 0) return inputChar;
+            return _substitutionArray[x,y];
+        }
+
         public string Encode(string input, string key)
         {
             var inputChars = input.ToCharArray();
             var keyChars = CreateKeyString(key, input.Length).ToCharArray();
-        public char Decode(char inputChar, char keyChar)
-        {
-            var k = Array.FindIndex(_alphabet, c => c == keyChar);
-            var i = Array.FindIndex(_alphabet, c => c == inputChar);
-            if (k < 0 || i < 0) return inputChar;
-
-            // (input,key)=output
-            // (h,v)=m -> (8,22)=13
-            // (m,i)=e -> (13,9)=5
-
-            return _substitutionArray[0,((_alphabetSize-k)+i)%_alphabetSize];
-        }
-
             var stringBuilder = new StringBuilder();
 
             for(var i = 0; i < inputChars.Length; i++)
@@ -118,9 +105,29 @@ namespace core
             return stringBuilder.ToString();
         }
 
+        public char Decode(char inputChar, char keyChar)
+        {
+            var k = Array.FindIndex(_alphabet, c => c == keyChar);
+            var i = Array.FindIndex(_alphabet, c => c == inputChar);
+            if (k < 0 || i < 0) return inputChar;
+
+            // (h,v)=m -> (8,22)=13
+            // (m,i)=e -> (13,9)=5
+
+            return _substitutionArray[0,((_alphabetSize-k)+i)%_alphabetSize];
+        }
+
         public string Decode(string input, string key)
         {
-            throw new NotImplementedException();
+            var inputChars = input.ToCharArray();
+            var keyChars = CreateKeyString(key, input.Length).ToCharArray();
+            var stringBuilder = new StringBuilder();
+
+            for(var i = 0; i < inputChars.Length; i++)
+            {
+                stringBuilder.Append(Decode(inputChars[i], keyChars[i]));
+            }
+            return stringBuilder.ToString();
         }
     }
 }
