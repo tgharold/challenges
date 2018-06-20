@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -96,6 +96,19 @@ namespace core
         {
             var inputChars = input.ToCharArray();
             var keyChars = CreateKeyString(key, input.Length).ToCharArray();
+        public char Decode(char inputChar, char keyChar)
+        {
+            var k = Array.FindIndex(_alphabet, c => c == keyChar);
+            var i = Array.FindIndex(_alphabet, c => c == inputChar);
+            if (k < 0 || i < 0) return inputChar;
+
+            // (input,key)=output
+            // (h,v)=m -> (8,22)=13
+            // (m,i)=e -> (13,9)=5
+
+            return _substitutionArray[0,((_alphabetSize-k)+i)%_alphabetSize];
+        }
+
             var stringBuilder = new StringBuilder();
 
             for(var i = 0; i < inputChars.Length; i++)
