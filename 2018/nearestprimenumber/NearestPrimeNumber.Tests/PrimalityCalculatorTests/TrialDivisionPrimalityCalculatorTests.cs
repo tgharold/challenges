@@ -10,6 +10,7 @@ namespace NearestPrimeNumber.Tests.PrimalityCalculatorTests
         private readonly IPrimalityCalculator _sut;
 
         public static readonly IReadOnlyCollection<object[]> TinyPrimes = TestData.TinyPrimes;
+        public static readonly IReadOnlyCollection<object[]> SmallPrimes = TestData.SmallPrimes;
 
         public TrialDivisionPrimalityCalculatorTests()
         {
@@ -18,13 +19,18 @@ namespace NearestPrimeNumber.Tests.PrimalityCalculatorTests
 
         [Theory]
         [MemberData(nameof(TestData.TinyPrimes))]
-        public void Test1(long input, bool expected)
+        public void Test_TinyPrimes(long input, bool expected)
         {
             var result = _sut.IsPrime(input);
-            Assert.True(
-                expected==result,
-                $"Input: {input}, Expected: {expected}, Result: {result}"
-            );
+            TestHelpers.AssertResultMatchesExpectation(input, expected, result);
+        }
+
+        [Theory]
+        [MemberData(nameof(TestData.SmallPrimes))]
+        public void Test_SmallPrimes(long input, bool expected)
+        {
+            var result = _sut.IsPrime(input);
+            TestHelpers.AssertResultMatchesExpectation(input, expected, result);
         }
     }
 }
