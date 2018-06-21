@@ -18,7 +18,7 @@ namespace NearestPrimeNumber.Tests.PrimalityCalculatorTests
         }
 
         [Theory]
-        [MemberData(nameof(TestData.TinyPrimes))]
+        [MemberData(nameof(TinyPrimes))]
         public void Test_TinyPrimes(long input, bool expected)
         {
             var result = _sut.IsPrime(input);
@@ -26,7 +26,7 @@ namespace NearestPrimeNumber.Tests.PrimalityCalculatorTests
         }
 
         [Theory]
-        [MemberData(nameof(TestData.SmallPrimes))]
+        [MemberData(nameof(SmallPrimes))]
         public void Test_SmallPrimes(long input, bool expected)
         {
             var result = _sut.IsPrime(input);
