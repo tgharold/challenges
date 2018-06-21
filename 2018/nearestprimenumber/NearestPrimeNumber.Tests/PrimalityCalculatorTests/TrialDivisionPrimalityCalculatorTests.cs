@@ -5,22 +5,26 @@ using Xunit;
 
 namespace NearestPrimeNumber.Tests.PrimalityCalculatorTests
 {
-    public class SieveOfEratosthenesPrimalityCalculatorTests
+    public class TrialDivisionPrimalityCalculatorTests
     {
-        private IPrimalityCalculator _sut;
+        private readonly IPrimalityCalculator _sut;
 
         public static readonly IReadOnlyCollection<object[]> TinyPrimes = TestData.TinyPrimes;
 
-        public SieveOfEratosthenesPrimalityCalculatorTests()
+        public TrialDivisionPrimalityCalculatorTests()
         {
-            _sut = new SieveOfEratosthenesPrimalityCalculator();
+            _sut = new TrialDivisionPrimalityCalculator();
         }
 
         [Theory]
         [MemberData(nameof(TestData.TinyPrimes))]
         public void Test1(long input, bool expected)
         {
-            Assert.Equal(expected, _sut.IsPrime(input));
+            var result = _sut.IsPrime(input);
+            Assert.True(
+                expected==result,
+                $"Input: {input}, Expected: {expected}, Result: {result}"
+            );
         }
     }
 }
