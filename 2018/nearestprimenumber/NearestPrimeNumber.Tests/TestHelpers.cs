@@ -17,5 +17,16 @@ namespace NearestPrimeNumber.Tests
                 $"Input: {input}, Expected: {expected}, Result: {result}"
             );
         }
+
+        public static void AssertResultMatchesExpectation(
+            long expected, 
+            long result
+            )
+        {
+            Assert.True(
+                expected==result,
+                $"Expected: {expected}, Result: {result}"
+            );
+        }
     }
 }
