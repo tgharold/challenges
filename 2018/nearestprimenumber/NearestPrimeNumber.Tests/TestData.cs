@@ -6,8 +6,7 @@ namespace NearestPrimeNumber.Tests
 {
     public class TestData
     {
-    public static IReadOnlyCollection<object[]> TinyPrimes =>
-        new []
+        public static IReadOnlyCollection<object[]> TinyPrimes => new []
         {
             new object[] { 1, true },
             new object[] { 2, true },
@@ -31,8 +30,16 @@ namespace NearestPrimeNumber.Tests
             new object[] { 20, false },
         };
 
-    public static IReadOnlyCollection<object[]> SmallPrimes =>
-        new []
+        ///<summary>Pairs of primes with no other primes between</summary>
+        public static IReadOnlyCollection<object[]> NearestTinyPrimePairs => new []
+        {
+            new object[] { 3, 5 },
+            new object[] { 5, 7 },
+            new object[] { 11, 13 },
+            new object[] { 13, 17 },
+        };
+
+        public static IReadOnlyCollection<object[]> SmallPrimes => new []
         {
             new object[] { 193, true },
             new object[] { 194, false },
@@ -73,6 +80,14 @@ namespace NearestPrimeNumber.Tests
             new object[] { 5028, false },
             new object[] { 5029, false },
             new object[] { 5030, false },
+        };
+
+        ///<summary>Pairs of primes with no other primes between</summary>
+        public static IReadOnlyCollection<object[]> NearestSmallPrimePairs => new []
+        {
+            new object[] { 5003, 5009 },
+            new object[] { 5011, 5021 },
+            new object[] { 5021, 5023 },
         };
     }
 }
