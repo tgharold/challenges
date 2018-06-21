@@ -2,20 +2,20 @@ using System;
 
 namespace NearestPrimeNumber.PrimalityCalculators
 {
+    ///<summary>Brute-force approach to testing for primality.</summary>
     public class TrialDivisionPrimalityCalculator : IPrimalityCalculator
     {
+        // https://en.wikipedia.org/wiki/Trial_division
         public bool IsPrime(long input)
         {
             if (input < 1) throw new ArgumentOutOfRangeException(nameof(input), "Must be > 0");
+            if (input > Int32.MaxValue)  throw new ArgumentOutOfRangeException(nameof(input), $"Must be <= {Int32.MaxValue}");
             if (input <= 3) return true;
 
             var sqrt = (int) Math.Floor(Math.Sqrt(input));
-            var arraySize = ((int) (sqrt/2));
-            var array = new bool[arraySize];
-
-            for (var i = 3; i <= sqrt; i += 2)
+            for (var i = 2; i <= sqrt; i++)
             {
-                
+                if (input % i == 0) return false;
             }
 
             return true;
