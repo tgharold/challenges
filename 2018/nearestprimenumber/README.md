@@ -35,3 +35,7 @@ If n already is a prime, the output will be:
     541 is prime.  
     991 < 993 < 997  
     647 < 649 < 653
+
+## References
+
+- https://primes.utm.edu/prove/merged.html

@@ -1,6 +1,6 @@
 using System;
 
-namespace NearestPrimeNumber
+namespace NearestPrimeNumber.PrimalityCalculators
 {
     public class AgrawalKayalSaxenaPrimalityCalculator : IPrimalityCalculator
     {
