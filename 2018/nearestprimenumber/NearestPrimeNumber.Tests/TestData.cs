@@ -6,6 +6,7 @@ namespace NearestPrimeNumber.Tests
 {
     public class TestData
     {
+        ///<summary>Test data below 30,000.</summary>
         public static IReadOnlyCollection<object[]> TinyPrimes => new []
         {
             new object[] { 1, true },
@@ -28,17 +29,64 @@ namespace NearestPrimeNumber.Tests
             new object[] { 18, false },
             new object[] { 19, true },
             new object[] { 20, false },
+            // 193-200
+            new object[] { 193, true },
+            new object[] { 194, false },
+            new object[] { 195, false },
+            new object[] { 196, false },
+            new object[] { 197, true },
+            new object[] { 198, false },
+            new object[] { 199, true },
+            new object[] { 200, false },
+            // 5001-5030
+            new object[] { 5001, false },
+            new object[] { 5002, false },
+            new object[] { 5003, true },
+            new object[] { 5004, false },
+            new object[] { 5005, false },
+            new object[] { 5006, false },
+            new object[] { 5007, false },
+            new object[] { 5008, false },
+            new object[] { 5009, true },
+            new object[] { 5010, false },
+            new object[] { 5011, true },
+            new object[] { 5012, false },
+            new object[] { 5013, false },
+            new object[] { 5014, false },
+            new object[] { 5015, false },
+            new object[] { 5016, false },
+            new object[] { 5017, false },
+            new object[] { 5018, false },
+            new object[] { 5019, false },
+            new object[] { 5020, false },
+            new object[] { 5021, true },
+            new object[] { 5022, false },
+            new object[] { 5023, true },
+            new object[] { 5024, false },
+            new object[] { 5025, false },
+            new object[] { 5026, false },
+            new object[] { 5027, false },
+            new object[] { 5028, false },
+            new object[] { 5029, false },
+            new object[] { 5030, false },
         };
 
-        ///<summary>Pairs of primes with no other primes between</summary>
+        ///<summary>Pairs of primes with no other primes between. Starting at
+        ///any value within the interval should result in floor/ceiling values
+        ///that match the ends of the interval.</summary>
         public static IReadOnlyCollection<object[]> NearestTinyPrimePairs => new []
         {
             new object[] { 3, 5 },
             new object[] { 5, 7 },
             new object[] { 11, 13 },
             new object[] { 13, 17 },
+            new object[] { 5003, 5009 },
+            new object[] { 5011, 5021 },
+            new object[] { 5021, 5023 },
+            new object[] { 28921, 28927 }
         };
 
+        ///<summary>Primes from 30,001 to 2 million</summary>
         public static IReadOnlyCollection<object[]> SmallPrimes => new []
         {
             new object[] { 193, true },
