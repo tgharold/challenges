@@ -97,3 +97,16 @@ For a bonus, also implement the decryption portion of the algorithm and try to d
     iamtheprettiestunicorn
     alwayslookonthebrightsideoflife
     foryoureyesonly
+
+## Running
+
+There are two console projects in the solution named "encode" and "decode".
+
+    $ cd encode
+    $ dotnet run cloak iamtheprettiestunicorn
+    klatrgafedvtssdwywcyty
+
+    $ cd decode
+    $ dotnet run cloak klatrgafedvtssdwywcyty
+    klatrgafedvtssdwywcyty
+
