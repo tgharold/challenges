@@ -21,8 +21,16 @@ number of dice: 120
 result: 5042
 ```
 
+# Running
+
+    $ dotnet run 3d6 12d8 1d2
+    input: 3d6,12d8,1d2
+    number of dice: 16
+    result: 73
+
 # Technology stack
 
 - .NET Core 2.1
 - macOS
 - Visual Studio Code
+
