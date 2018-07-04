@@ -9,20 +9,29 @@ namespace NearestPrimeNumber.NearestPrimeCalculatorTests
     public class TrialDivisionPrimalityCalculatorTests
     {
         private NearestPrimeCalculator _sut;
+        private IPrimalityCalculator _calculator;
 
         public static readonly IReadOnlyCollection<object[]> NearestTinyPrimePairs = TestData.NearestTinyPrimePairs;
         public static readonly IReadOnlyCollection<object[]> NearestSmallPrimePairs = TestData.NearestSmallPrimePairs;
 
         public TrialDivisionPrimalityCalculatorTests()
         {
-            _sut = new NearestPrimeCalculator(new TrialDivisionPrimalityCalculator());
+            _calculator = new TrialDivisionPrimalityCalculator();
+            _sut = new NearestPrimeCalculator(_calculator);
         }
 
         private long GetStartingPoint(long lowerPrime, long upperPrime)
         {
+            AssertLowerUpperAreBothPrime(lowerPrime, upperPrime);
             var midPoint = (upperPrime - lowerPrime) / 2 + lowerPrime;
             Assert.True(lowerPrime < midPoint && midPoint < upperPrime, $"{lowerPrime} < {midPoint} < {upperPrime}");
             return midPoint;
+        }
+
+        private void AssertLowerUpperAreBothPrime(long lowerPrime, long upperPrime)
+        {
+            Assert.True(_calculator.IsPrime(lowerPrime));
+            Assert.True(_calculator.IsPrime(upperPrime));
         }
 
         [Theory]
