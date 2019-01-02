@@ -1,12 +1,15 @@
 ﻿using System;
 
-namespace main
+namespace FizzyBuzzy
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            for(var i=1; i<=100; i++)
+            {
+                Console.WriteLine(FizzBuzz.Calculate(i));
+            }
         }
     }
 }
