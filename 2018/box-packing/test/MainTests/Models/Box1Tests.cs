@@ -16,13 +16,20 @@ namespace MainTests.Models
         [Fact]
         public void CanPutWidgetInBox()
         {
-            var box = new Box1(30);
-            var orientation = new int[] { 15 };
+            var box = new Box1(10);
+            var orientation = new int[] { 5 };
             var widget = new Widget(orientation);
+            var position = new int[] { 0 };
 
+            Assert.NotNull(box);
+            Assert.Equal(10, box.Length(0));
             Assert.NotNull(widget);
-            Assert.Equal(15, widget.Orientation[0]);
+            Assert.Equal(5, widget.Orientation[0]);
 
+            var result = box.PlaceInBox(widget, position);
+            Assert.True(result);
+
+            Assert.Equal("*****     ", box.LayerToString());
         }
     }
 }

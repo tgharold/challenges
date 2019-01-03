@@ -16,7 +16,9 @@ namespace Main.Models
 
         public void Swap(int a, int b)
         {
-            if (a < 0 || a > Orientation.Length) throw new ArgumentException(nameof(a));
+            if (a < 0 || a > Orientation.Length) throw new ArgumentOutOfRangeException(nameof(a));
+            if (b < 0 || b > Orientation.Length) throw new ArgumentOutOfRangeException(nameof(b));
+
             var tmp = _orientation[a];
             _orientation[a] = _orientation[b];
             _orientation[b] = _orientation[a];
@@ -24,7 +26,8 @@ namespace Main.Models
 
         public void Flip(int a)
         {
-            if (a < 0 || a > Orientation.Length) throw new ArgumentException(nameof(a));
+            if (a < 0 || a > Orientation.Length) throw new ArgumentOutOfRangeException(nameof(a));
+
             _orientation[a] = _orientation[a] * -1;
         }
     }

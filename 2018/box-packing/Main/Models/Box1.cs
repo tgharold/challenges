@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Main.Models
 {
@@ -8,26 +9,36 @@ namespace Main.Models
     public class Box1
     {
         private bool[] _interior;
-        private List<Widget> _widgets = new List<Widget>();
+        private List<BoxedWidget> _boxedWidgets = new List<BoxedWidget>();
 
         public Box1(int length)
         {
             _interior = new bool[length];
         }
 
+        public int Dimensions => 1;
+
         public int Length(int dimension)
         {
-            if (dimension < 0 || dimension > 0)
-                throw new ArgumentException(nameof(dimension));
+            if (dimension < 0 || dimension >= Dimensions)
+                throw new ArgumentOutOfRangeException(nameof(dimension));
 
             return _interior.Length;
         }
 
-        public List<Widget> Widgets { get => _widgets; }
+        public List<BoxedWidget> BoxedWidgets { get => _boxedWidgets; }
 
         public bool PlaceInBox(Widget widget, int[] position)
         {
-            return false;
+            var boxedWidget = new BoxedWidget(widget, position);
+            _boxedWidgets.Add(boxedWidget);
+
+            return true; //TODO: this is a temporary lie
+        }
+
+        public string LayerToString()
+        {
+            return string.Join("", _interior.Select(x => x ? "*" : " "));
         }
     }
 }
