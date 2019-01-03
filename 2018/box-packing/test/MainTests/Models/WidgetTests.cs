@@ -1,4 +1,4 @@
-namespace main.Models
+namespace MainTests.Models
 {
     public class WidgetTests
     {
