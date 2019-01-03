@@ -1,6 +1,6 @@
 
+using System;
 using System.Collections.Generic;
-using MathNet.Numerics.LinearAlgebra;
 
 namespace Main.Models
 {
@@ -15,9 +15,17 @@ namespace Main.Models
             _interior = new bool[length];
         }
 
+        public int Length(int dimension)
+        {
+            if (dimension < 0 || dimension > 0)
+                throw new ArgumentException(nameof(dimension));
+
+            return _interior.Length;
+        }
+
         public List<Widget> Widgets { get => _widgets; }
 
-        public bool PlaceInBox(Widget widget, Vector<int> position)
+        public bool PlaceInBox(Widget widget, int[] position)
         {
             return false;
         }
