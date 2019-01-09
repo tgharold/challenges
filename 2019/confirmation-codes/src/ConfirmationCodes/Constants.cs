@@ -4,6 +4,8 @@ namespace ConfirmationCodes
     {
         public const string Base2Binary = "01";
 
+        public const string Base10Decimal = "0123456789";
+
         public const string Base16Hexadecimal = "0123456789ABCDEF";
 
         public const string Base32Rfc4648 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
