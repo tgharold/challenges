@@ -26,6 +26,7 @@ namespace ConfirmationCodes
         public string Generate(int length)
         {
             BigInteger maximumValue = _base * length;
+            //TODO: calculate bytes needed using a log_base() function
             var bytesNeeded = Conversions.BaseToBase(maximumValue.ToString(), Constants.Base10Decimal, Constants.Base16Hexadecimal).Length / 2 + 1;
             byte[] bytes = new Byte[bytesNeeded];
             _rng.GetBytes(bytes);
