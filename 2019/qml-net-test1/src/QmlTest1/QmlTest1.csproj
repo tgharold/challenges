@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Qml.Net" Version="0.7.0" />
+    <PackageReference Include="Qml.Net.OSXBinaries" Version="0.7.0" />
   </ItemGroup>
 
 </Project>
