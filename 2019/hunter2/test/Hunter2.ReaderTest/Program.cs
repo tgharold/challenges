@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Hunter2.Core.Model;
 
 namespace Hunter2.ReaderTest
 {
@@ -24,6 +25,15 @@ namespace Hunter2.ReaderTest
             // Data structure to hold names of subfolders to be
             // examined for files.
             Stack<DirectoryInfo> dirs = new Stack<DirectoryInfo>(20);
+
+            var Scan = new Scan
+            {
+                StartingFolder = new FolderScan
+                {
+                    Uri = root.FullName,
+                    Name = root.Name,
+                }
+            };
 
             if (!root.Exists)
             {
@@ -77,6 +87,7 @@ namespace Hunter2.ReaderTest
                     Console.WriteLine(e.Message);
                     continue;
                 }
+
                 // Perform the required action on each file here.
                 // Modify this block to perform your required task.
                 foreach (var file in files)
