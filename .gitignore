@@ -331,3 +331,6 @@ ASALocalRun/
 
 # Visual Studio czode
 .vscode/
+
+# Misc
+.DS_Store
